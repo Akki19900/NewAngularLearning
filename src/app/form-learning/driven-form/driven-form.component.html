@@ -1,9 +1,53 @@
-<div class="form">
+<!-- <div class="form">
   <form #loginForm="ngForm" (ngSubmit)="userLogin(loginForm.value)">
     <input type="text" name="name" placeholder="Name" ngModel />
     <input type="password" name="password" placeholder="Password" ngModel />
     <input type="email" name="email" placeholder="Email" ngModel />
     <input type="number" name="age" placeholder="Age" ngModel />
     <button>Submit</button>
+  </form>
+</div> -->
+<div class="form">
+  <form #loginForm="ngForm" (ngSubmit)="userLogin(loginForm)">
+    <input
+      type="text"
+      name="firstName"
+      placeholder="First Name"
+      required
+      ngModel
+      #fname="ngModel"
+    />
+    <div>
+      <small *ngIf="fname.invalid && fname.touched"
+        >First Name is required field</small
+      >
+    </div>
+    <br />
+    <input
+      type="text"
+      name="lastName"
+      placeholder="Last Name"
+      required
+      ngModel
+    />
+    <br /><br />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      password
+      ngModel
+    /><br /><br />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      email
+      ngModel
+    />
+    <br /><br />
+    <button [disabled]="!loginForm.valid">Submit</button>
   </form>
 </div>

@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+  <input
+    type="text"
+    name="firstName"
+    placeholder="First Name"
+    formControlName="firstName"
+  />
+  <p>
+    {{ loginForm.value.firstName }}
+  </p>
+  <br /><br />
+  <input
+    type="text"
+    name="lastName"
+    placeholder="Last Name"
+    formControlName="lastName"
+  />
+  <p>
+    {{ loginForm.value.lastName }}
+  </p>
+  <br /><br />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    formControlName="password"
+  /><br /><br />
+  <button>Login</button>
+</form>
