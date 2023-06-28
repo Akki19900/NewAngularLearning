@@ -1,0 +1,38 @@
+<div class="cart">
+  <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+    <h2>Registration Form</h2>
+    <input
+      type="text"
+      name="firstname"
+      placeholder="First Name"
+      formControlName="firstName"
+    /><br />
+    <span
+      style="color: red"
+      *ngIf="firstName && firstName.invalid && firstName.touched"
+      >This field is required</span
+    >
+    <br />
+    <input
+      type="text"
+      name="lastName"
+      placeholder="Last Name"
+      formControlName="lastName"
+    /><br /><br />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      formControlName="email"
+    /><br /><br />
+    <input
+      type="{{ showPassword ? 'text' : 'password' }}"
+      name="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <input type="checkbox" name="checkbox" (change)="toggle()" /> Show
+    Password<br /><br />
+    <button [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

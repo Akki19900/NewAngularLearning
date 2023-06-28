@@ -5,9 +5,6 @@
     placeholder="First Name"
     formControlName="firstName"
   />
-  <p>
-    {{ loginForm.value.firstName }}
-  </p>
   <br /><br />
   <input
     type="text"
@@ -15,15 +12,21 @@
     placeholder="Last Name"
     formControlName="lastName"
   />
-  <p>
-    {{ loginForm.value.lastName }}
-  </p>
   <br /><br />
+
   <input
-    type="password"
-    name="password"
-    placeholder="Password"
+    type="{{ showPassword ? 'text' : 'password' }}"
+    id="password"
     formControlName="password"
-  /><br /><br />
-  <button>Login</button>
+  />
+  <div *ngIf="">
+    Password must be at least 8 characters long.
+  </div>
+
+  <label>
+    <input type="checkbox" (change)="togglePasswordVisibility()" />
+    Show Password
+    <button>Login</button>
+    <form></form
+  ></label>
 </form>

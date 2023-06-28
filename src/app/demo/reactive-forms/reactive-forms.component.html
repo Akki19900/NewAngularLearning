@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="newLoginForm" (ngSubmit)="loginFunction()">
+    <input
+      type="text"
+      name="firstName"
+      placeholder="First Name"
+      formControlName="firstName"
+    />
+    <br />
+    <p>
+      {{ newLoginForm.value.firstName }}
+    </p>
+    <input
+      type="text"
+      name="lastName"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+    <button [disabled]="newLoginForm.invalid">Login</button>
+  </form>
+</div>
