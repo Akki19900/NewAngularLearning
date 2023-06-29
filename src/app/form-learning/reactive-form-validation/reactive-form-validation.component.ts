@@ -12,17 +12,22 @@ export class ReactiveFormValidationComponent {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl(''),
     email: new FormControl('', [Validators.email]),
-    password: new FormControl(''),
+    password: new FormControl('', [Validators.required, Validators.min(10)]),
   });
-
   userLogin() {
-    console.log(this.loginForm.value);
+    console.log(this.loginForm);
   }
   toggle() {
     this.showPassword = !this.showPassword;
   }
-
   get firstName() {
     return this.loginForm.get('firstName');
+  }
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 }

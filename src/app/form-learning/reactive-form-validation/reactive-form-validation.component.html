@@ -24,7 +24,12 @@
       name="email"
       placeholder="Email"
       formControlName="email"
-    /><br /><br />
+    />
+    <br />
+    <span style="color: red" *ngIf="email && email.invalid"
+      >enter valid email</span
+    >
+    <br /><br />
     <input
       type="{{ showPassword ? 'text' : 'password' }}"
       name="password"
@@ -33,6 +38,7 @@
     />
     <input type="checkbox" name="checkbox" (change)="toggle()" /> Show
     Password<br /><br />
+    <span *ngIf="password && password.invalid&&password.touched"> This field is required</span>
     <button [disabled]="loginForm.invalid">Login</button>
   </form>
 </div>
