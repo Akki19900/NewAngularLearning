@@ -1,0 +1,37 @@
+<form [formGroup]="passwordForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password" />
+    <div
+      *ngIf="
+        passwordForm.get('password')?.invalid &&
+        (passwordForm.get('password')?.dirty ||
+          passwordForm.get('password')?.touched)
+      "
+    >
+      <div *ngIf="passwordForm.get('password')?.hasError('required')">
+        Password is required.
+      </div>
+      <div *ngIf="passwordForm.get('password')?.hasError('pattern')">
+        Password should contain at least 8 characters, one uppercase letter, one
+        lowercase letter, one number, and one special character.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+    />
+    <div *ngIf="passwordForm.get('confirmPassword')?.invalid">
+      <div *ngIf="passwordForm.hasError('passwordMismatch')">
+        Passwords do not match.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

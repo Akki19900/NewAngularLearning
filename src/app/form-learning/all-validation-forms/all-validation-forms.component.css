@@ -13,3 +13,8 @@ input {
 .check {
   display: inline;
 }
+.btn {
+  display: flex;
+  padding: 5px;
+  margin: 10px;
+}

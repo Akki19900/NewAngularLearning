@@ -1,24 +1,75 @@
-<form>
+<form [formGroup]="userLoginForm" (ngSubmit)="userLogin()">
   <div>
-    <input type="text" name="name" id="name" placeholder="First Name" />
-    <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
     <input
-      type="password"
+      type="text"
+      name="name"
+      id="name"
+      placeholder="First Name"
+      formControlName="name"
+    />
+    <div *ngIf="name && name.invalid && name.touched"></div>
+    <div style="color: red" *ngIf="name?.hasError('required') && name?.touched">
+      this field is required
+    </div>
+    <div
+      style="color: red"
+      *ngIf="userLoginForm.get('name')?.hasError('minlength')"
+    >
+      Min length is required
+    </div>
+
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+    <input
+      type="{{ showPassword ? 'text' : 'password' }}"
       name="password"
       id="password"
       placeholder="Password"
+      formControlName="password"
     />
+    <div *ngIf="password && password.invalid"></div>
+    <div *ngIf="password?.hasError('required') && password?.touched">
+      Password is required
+    </div>
+    <div *ngIf="password?.hasError('pattern')">
+      Password should contain at least 8 characters, one uppercase letter, one
+      lowercase letter, and one number.
+    </div>
     <input
-      type="password"
+      type="{{ showPassword ? 'text' : 'password' }}"
       name="conformPassword"
       id="conformPassword"
       placeholder="Conform Password"
+      formControlName="conformPassword"
     />
+    <div
+      *ngIf="
+        (conformPassword && conformPassword.invalid && conformPassword.dirty) ||
+        conformPassword?.touched
+      "
+    ></div>
+    <div *ngIf="conformPassword?.hasError('mismatched')">
+      Password mismatched
+    </div>
+
     <input
       class="check"
       type="checkbox"
       name="showPassword"
       id="showPassword"
+      (change)="toggle()"
     />Show Password
+    <button class="btn">Login</button>
   </div>
 </form>
+
+<p>
+  {{ password?.value }}
+
+  {{ conformPassword?.value }}
+</p>

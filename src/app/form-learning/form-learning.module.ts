@@ -6,6 +6,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PractiiceReactiveFormComponent } from './practiice-reactive-form/practiice-reactive-form.component';
 import { ReactiveFormValidationComponent } from './reactive-form-validation/reactive-form-validation.component';
 import { AllValidationFormsComponent } from './all-validation-forms/all-validation-forms.component';
+import { ReactiveFormCustomComponent } from './reactive-form-custom/reactive-form-custom.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AllValidationFormsComponent } from './all-validation-forms/all-validati
     PractiiceReactiveFormComponent,
     ReactiveFormValidationComponent,
     AllValidationFormsComponent,
+    ReactiveFormCustomComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -22,6 +24,7 @@ import { AllValidationFormsComponent } from './all-validation-forms/all-validati
     PractiiceReactiveFormComponent,
     ReactiveFormValidationComponent,
     AllValidationFormsComponent,
+    ReactiveFormCustomComponent,
   ],
 })
 export class FormLearningModule {}
